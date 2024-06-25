@@ -11,16 +11,16 @@ services:
       - 8000:8000
     depends_on:
       - db
-
+    
   db:
     container_name: cer3_db
-    image: postgres:16.3
+    image: postgres:14
     ports:
-      - 5432-5432
+      - 5432:5432
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_DB: cer3
-      POSTGRES_PASSWORD: miau123.
+     POSTGRES_USER: postgres
+     POSTGRES_DB: cer3
+     POSTGRES_PASSWORD: miau123.
 
 networks:
   default:

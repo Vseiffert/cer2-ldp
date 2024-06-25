@@ -1,7 +1,7 @@
-from python:3.10
+FROM python:3.10
 
-workdir /app/
+WORKDIR /app/
 
-copy requirements.txt .
+COPY requirements.txt .
 
-run pip install -r requirements.txt
+RUN pip install -r requirements.txt
