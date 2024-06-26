@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Pokémon</title>
+</head>
+<body>
+    <h1>List of Pokémon</h1>
+    <ul>
+        {% for pokemon in pokemons %}
+            <li>
+                <h2>{{ pokemon.name }}</h2>
+                <p>Pokedex Number: {{ pokemon.pokedex_number }}</p>
+                <p>Primary Type: {{ pokemon.primary_type }}</p>
+                {% if pokemon.secondary_type %}
+                    <p>Secondary Type: {{ pokemon.secondary_type }}</p>
+                {% endif %}
+                <img src="{{ pokemon.image_url }}" alt="{{ pokemon.name }} Image">
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -14,19 +14,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from rest_framework import routers
 from rest_framework.routers import DefaultRouter
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from backend.views import *
 
-from backend.views import NumberViewSet, CreateRandomNumber, PokemonViewSet
+from backend.views import NumberViewSet, CreateRandomNumber, PokemonViewSet, PokemonListAPIView
 
 router = DefaultRouter()
 router.register(r'numbers', NumberViewSet)
-router.register(r'pokemons', PokemonViewSet)
+router.register(r'pokemons', PokemonViewSet, basename='pokemon')
 
 urlpatterns = [
+    path('pokemons/', PokemonListAPIView.as_view(), name='pokemon-list'),
     path('', include(router.urls)),
     path('random/', CreateRandomNumber.as_view(), name='create_random_number'),
     path('admin/', admin.site.urls),

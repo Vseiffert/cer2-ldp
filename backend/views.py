@@ -1,4 +1,8 @@
 from rest_framework import viewsets, generics
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from django.shortcuts import render
 from backend.models import Number, Pokemon
 from backend.serializers.NumberSerializer import NumberSerializer
 from backend.serializers.PokemonSerializer import PokemonSerializer
@@ -23,9 +27,19 @@ class NumberViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(number=number)
         return queryset
 
+class PokemonListAPIView(APIView):
+    def get(self, request):
+        pokemons = Pokemon.objects.all()
+        serializer = PokemonSerializer(pokemons, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 class PokemonViewSet(viewsets.ModelViewSet):
     queryset = Pokemon.objects.all()
     serializer_class = PokemonSerializer
+    
+    def list(self, request):
+        pokemons = self.get_queryset() #se obtienen los datos
+        return render(request, 'pokemon_list.html', {'pokemons': pokemons}) #se renderiza la imagen
 
     # def get_queryset(self):
     #     """
