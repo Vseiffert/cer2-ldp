@@ -18,10 +18,12 @@
 .pokemon-item {
   width: calc(33.33% - 20px); /* Ancho de cada columna (33.33% con el espacio entre imágenes) */
   text-align: center; /* Alinea las imágenes al centro horizontalmente */
+  overflow: hidden; /* Oculta cualquier parte de la imagen que se salga del contenedor */
 }
 
 .pokemon-item img {
-  width: 96px; /* Tamaño deseado de la imagen */
-  height: 96px;
+  width: auto; /* La imagen ocupará el ancho completo del contenedor */
+  height: auto; /* Altura automática para mantener la proporción de la imagen */
   object-fit: cover; /* Ajusta la imagen para llenar el espacio sin distorsionar */
 }
+

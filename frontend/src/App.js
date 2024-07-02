@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
 
@@ -23,9 +27,13 @@ function App() {
           {pokemonList.map(pokemon => (
             <div key={pokemon.pokedex_number} className="pokemon-item">
               <img src={pokemon.image_url} alt={pokemon.name} />
-              <p>{pokemon.name}</p>
-              <p>Type: {pokemon.primary_type}</p>
-              {pokemon.secondary_type && <p>Secondary Type: {pokemon.secondary_type}</p>}
+              <p>{capitalize(pokemon.name)}</p>
+              <p>Pokedex: {pokemon.pokedex_number}</p>
+              <p>
+                Tipo: {capitalize(pokemon.primary_type)}
+                {pokemon.secondary_type && <span> / {capitalize(pokemon.secondary_type)}</span>}
+              </p>
+              <p>{pokemon.description}</p> {}
             </div>
           ))}
         </div>
@@ -35,4 +43,3 @@ function App() {
 }
 
 export default App;
-
