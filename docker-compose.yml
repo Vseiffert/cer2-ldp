@@ -7,8 +7,11 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app/
+      - /code/node_modules
     ports:
       - 8000:8000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     depends_on:
       - db
     
@@ -21,6 +24,21 @@ services:
      POSTGRES_USER: postgres
      POSTGRES_DB: cer3
      POSTGRES_PASSWORD: miau123.
+
+  frontend:
+    container_name: cer3_frontend
+    build:
+      context: ./frontend
+    command: npm start
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - 3000:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - web
 
 networks:
   default:

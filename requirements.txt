@@ -5,3 +5,5 @@ dj-database-url
 psycopg2
 requests
 Pillow
+npm
+django-cors-headers

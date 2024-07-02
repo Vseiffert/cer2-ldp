@@ -1,0 +1,27 @@
+.App-header {
+  background-color: #282c34; /* Color de fondo oscuro */
+  min-height: 100vh; /* Altura mínima igual al 100% del viewport */
+  display: flex; /* Utiliza el modelo de caja flexible */
+  flex-direction: column; /* Dirección de los elementos en columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  justify-content: center; /* Centra los elementos verticalmente */
+  font-size: calc(10px + 2vmin); /* Tamaño de fuente responsivo */
+  color: white; /* Color del texto en blanco */
+}
+
+.pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espacio entre las imágenes */
+}
+
+.pokemon-item {
+  width: calc(33.33% - 20px); /* Ancho de cada columna (33.33% con el espacio entre imágenes) */
+  text-align: center; /* Alinea las imágenes al centro horizontalmente */
+}
+
+.pokemon-item img {
+  width: 96px; /* Tamaño deseado de la imagen */
+  height: 96px;
+  object-fit: cover; /* Ajusta la imagen para llenar el espacio sin distorsionar */
+}
