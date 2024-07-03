@@ -33,7 +33,6 @@ function App() {
                 Tipo: {capitalize(pokemon.primary_type)}
                 {pokemon.secondary_type && <span> / {capitalize(pokemon.secondary_type)}</span>}
               </p>
-              <p>{pokemon.description}</p> {}
             </div>
           ))}
         </div>
